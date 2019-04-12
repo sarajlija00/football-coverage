@@ -7,6 +7,7 @@ function laLiga() {
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             let result = JSON.parse (xhttp.responseText);
+            html = ""
             result.matches.forEach(laLigaResult);
     console.log(html);
 
@@ -21,10 +22,10 @@ function laLiga() {
 function laLigaResult(match){
     html +=`
         <tr>
-            <td class="text">${match.homeTeam.name}</td>
+            <td class="text paddr">${match.homeTeam.name}</td>
             <td class="text">-</td>  
-            <td class="text">${match.awayTeam.name}</td>
-            <td class="text">${match.score.fullTime.homeTeam} : ${ match.score.fullTime.awayTeam}</td>
+            <td class="text paddl">${match.awayTeam.name}</td>
+            <td class="text paddl">${match.score.fullTime.homeTeam} : ${ match.score.fullTime.awayTeam}</td>
         </tr>
      `
 }

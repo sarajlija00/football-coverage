@@ -23,12 +23,17 @@ input {
    margin-top: 15px;
 }
 .text {
-    margin-left: 15%;
-    margin-top: 40px;
     font-weight: bold;
     font-size: 20px;
-    color: black;
-   
-    
-    
+    color: black;    
+}
+.space {
+    margin-left: 3%;
+    margin-top: 60px;
+}
+.paddl {
+    padding-left: 25px;
+}
+.paddr {
+    padding-right: 25px;
 }
