@@ -8,6 +8,8 @@ function laLiga() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             let result = JSON.parse (xhttp.responseText);
             result.matches.forEach(laLigaResult);
+    console.log(html);
+
             document.getElementById('result').innerHTML = html;
         }
     }
@@ -18,11 +20,26 @@ function laLiga() {
 
 function laLigaResult(match){
     html +=`
-    <div>
-    <table class="font">
-      <td>${match.homeTeam.name}</td>
-      <td>-</td>  
-      <td>${match.awayTeam.name}</td>
-      <td>${match.score.fullTime.homeTeam} : ${ match.score.fullTime.awayTeam}</td>
-    </div>`
+        <tr>
+            <td class="text">${match.homeTeam.name}</td>
+            <td class="text">-</td>  
+            <td class="text">${match.awayTeam.name}</td>
+            <td class="text">${match.score.fullTime.homeTeam} : ${ match.score.fullTime.awayTeam}</td>
+        </tr>
+     `
+}
+
+function laLigaTable() {
+    let xhttp = new XMLHttpRequest();
+    let url = "http://api.football-data.org/2/competitions/PD/leagueTable";
+    xhttp.onreadystatechange =function() {
+        if(xhttp.readyState == 4 && xhttp.status == 200){
+            let table = JSON.parse (xhttp.responseText);
+            
+        }
+        
+    }
+    xhttp.open ("GET", url, true);
+    xhttp.setRequestHeader ('X-Auth-Token', token);
+    xhttp.send();
 }
