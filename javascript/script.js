@@ -22,10 +22,10 @@ function laLiga() {
 function laLigaResult(match){
     html +=`
         <tr>
-            <td class="text paddr">${match.homeTeam.name}</td>
+            <td class="text padd">${match.homeTeam.name}</td>
             <td class="text">-</td>  
-            <td class="text paddl">${match.awayTeam.name}</td>
-            <td class="text paddl">${match.score.fullTime.homeTeam} : ${ match.score.fullTime.awayTeam}</td>
+            <td class="text padd">${match.awayTeam.name}</td>
+            <td class="text">${match.score.fullTime.homeTeam} : ${ match.score.fullTime.awayTeam}</td>
         </tr>
      `
 }

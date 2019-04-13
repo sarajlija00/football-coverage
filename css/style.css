@@ -2,7 +2,7 @@ body {
     height: 100vh;
     background-image: url("../image/back.jpg");
     background-repeat: repeat;
-    background-size: cover
+    background-size: cover;
 }
 input {
     width: 200px;
@@ -12,10 +12,10 @@ input {
     border-color: black;
 }
 .marg {
-    margin-left: 20%;
+    margin-left: 15%;
 }
 .stab {
-    margin-left: 25%;
+    margin-left: 35%;
 }
 
 .img {
@@ -24,16 +24,18 @@ input {
 }
 .text {
     font-weight: bold;
-    font-size: 20px;
-    color: black;    
+    font-size: 18px;
+    color: black;
+    background-color: rgb(226, 219, 219);
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    
 }
 .space {
     margin-left: 3%;
     margin-top: 60px;
 }
-.paddl {
-    padding-left: 25px;
-}
-.paddr {
-    padding-right: 25px;
+.padd {
+    padding-right: 15px;
 }
