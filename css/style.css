@@ -39,3 +39,12 @@ input {
 .padd {
     padding-right: 15px;
 }
+.table {
+    margin-left: 35.5%;
+}
+.err {
+    font-size: 20px;
+    color: red;
+    margin-left: 18%;
+    margin-top: 15px;
+}

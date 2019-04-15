@@ -13,6 +13,14 @@ function laLiga() {
             result.matches.forEach(laLigaResult);
             document.getElementById('result').innerHTML = html;
         }
+        if (week == '') {
+            document.getElementById('error').innerHTML = 'Enter the week';
+            document.getElementById ('result').innerHTML = week;
+        }
+        if (week !== ''){
+            document.getElementById ('error').style = 'display:none';
+        }
+       
     }
     xhttp.open ("GET", url, true);
     xhttp.setRequestHeader ('X-Auth-Token', token);

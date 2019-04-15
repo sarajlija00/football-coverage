@@ -17,14 +17,16 @@
         <div>
             <form class="marg">
                 <input type="number" placeholder="LaLiga scores per week" id="week">
+                <input type="number" placeholder="LaLiga table per week" class="stab">
                 <br>
                 <br>
-                <input type="button" value="The results LaLiga last week" onclick="laLiga()" >
-                <input type="button" value="Spanish LaLiga table" class="stab" onclick="laLigaTable ()"> 
+                <input type="button" value="LaLiga results per week" onclick="laLiga()" >               
+                <input type="button" value="Spanish LaLiga table" class="stab table" onclick="laLigaTable ()"> 
             </form>
         </div>
 
         <div>
+            <div id="error" class="err"></div>
             <table id="result" class="space"></table>
         </div>
 
