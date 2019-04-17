@@ -1,24 +1,29 @@
 let token = `6205c51f2f31438ab76389b3644da184`;
 let html = ``;
+let stng = ``;
 
 function laLiga() {
     let xhttp = new XMLHttpRequest ();
     let week = document.getElementById('week').value;
-    let url = `http://api.football-data.org/v2/competitions/PD/matches/?matchday=` + week;   
+    //document.getElementById('week').value = '';
+    let url = `http://api.football-data.org/v2/competitions/PD/matches/?matchday=` + week;  
+    //ako je week false prvo odraditi gresku pa tek onda slati 
+    if(!week){
+        document.getElementById ('error').style = 'display:block';
+        document.getElementById('error').innerHTML = 'Enter the week';
+        document.getElementById('result').innerHTML = week;
+        return;
+    }
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             let result = JSON.parse (xhttp.responseText);
-            console.log(result);
             html = ""
             result.matches.forEach(laLigaResult);
             document.getElementById('result').innerHTML = html;
         }
-        if (week == '') {
-            document.getElementById('error').innerHTML = 'Enter the week';
-            document.getElementById ('result').innerHTML = week;
-        }
-        if (week !== ''){
-            document.getElementById ('error').style = 'display:none';
+        //namjenjeno da se ukloni error nakon ponovnog klika
+        if (week !==''){
+            document.getElementById('error').style = 'display:none';
         }
        
     }
@@ -40,14 +45,17 @@ function laLigaResult(match){
 
 function laLigaTable(position) {
     xhttp = new XMLHttpRequest();
-    let url = `http://api.football-data.org/v2/competitions/PD/standings/?matchday=31`;
+    let weekTable = document.getElementById('weekTable').value;
+    let url = `http://api.football-data.org/v2/competitions/PD/standings/?matchday=` + weekTable;
     xhttp.onreadystatechange =function() {
         if(xhttp.readyState == 4 && xhttp.status == 200){
             let table = JSON.parse (xhttp.responseText);
+            stng = "";
             console.log(table);
-            table.standings.table.forEach(laLigaPos);
-            document.getElementById('standing').innerHTML = html;
+            table.standings[0].table.forEach(laLigaPos);
+            document.getElementById('standing').innerHTML = stng;
             
+        
        }
     }
    xhttp.open ("GET", url, true);
@@ -56,9 +64,17 @@ function laLigaTable(position) {
 }
 
 function laLigaPos(position){
-    html +=`
+
+    stng +=`
         <tr>
+            <td class="text padd">${position.position}</td>
             <td class="text padd">${position.team.name}</td>
+            <td class="text padd">${position.playedGames}</td>
+            <td class="text padd">${position.won}</td>
+            <td class="text padd">${position.draw}</td>
+            <td class="text padd">${position.lost}</td>
+            <td class="text padd">${position.goalsFor} : ${position.goalsAgainst}</td>    
+            <td class="text padd">${position.points}</td>
         </tr>
         `
 }
