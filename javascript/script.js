@@ -5,9 +5,8 @@ let stng = ``;
 function laLiga() {
     let xhttp = new XMLHttpRequest ();
     let week = document.getElementById('week').value;
-    //document.getElementById('week').value = '';
     let url = `http://api.football-data.org/v2/competitions/PD/matches/?matchday=` + week;  
-    //ako je week false prvo odraditi gresku pa tek onda slati 
+    //ako je week false prvo odraditi gresku pa tek onda slati request
     if(!week){
         document.getElementById ('error').style = 'display:block';
         document.getElementById('error').innerHTML = 'Enter the week';
@@ -17,7 +16,7 @@ function laLiga() {
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             let result = JSON.parse (xhttp.responseText);
-            html = ""
+            html = "";
             result.matches.forEach(laLigaResult);
             document.getElementById('result').innerHTML = html;
         }
@@ -34,7 +33,7 @@ function laLiga() {
 
 function laLigaResult(match){
     html +=`
-        <tr>
+        <tr class = "col-sm-6 col-md-4">
            <td class="text padd">${match.homeTeam.name}</td>
            <td class="text">-</td>  
            <td class="text padd">${match.awayTeam.name}</td>
@@ -47,16 +46,23 @@ function laLigaTable(position) {
     xhttp = new XMLHttpRequest();
     let weekTable = document.getElementById('weekTable').value;
     let url = `http://api.football-data.org/v2/competitions/PD/standings/?matchday=` + weekTable;
+    if(!weekTable){
+        document.getElementById ('error').style = 'display:block';
+        document.getElementById('error').innerHTML = 'Enter the week';
+        document.getElementById('standing').innerHTML = weekTable;
+        return;
+    }
     xhttp.onreadystatechange =function() {
         if(xhttp.readyState == 4 && xhttp.status == 200){
             let table = JSON.parse (xhttp.responseText);
             stng = "";
             console.log(table);
             table.standings[0].table.forEach(laLigaPos);
-            document.getElementById('standing').innerHTML = stng;
-            
-        
-       }
+            document.getElementById('standing').innerHTML = stng;  
+        }
+        if (weekTable !==''){
+            document.getElementById('error').style = 'display:none';
+        }
     }
    xhttp.open ("GET", url, true);
    xhttp.setRequestHeader ('X-Auth-Token', token);

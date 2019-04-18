@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     background-image: url("../image/back.jpg");
-    background-repeat: repeat;
+    background-attachment: fixed;
     background-size: cover;
 }
 input {
@@ -45,9 +45,13 @@ input {
 .err {
     font-size: 20px;
     color: red;
-    margin-left: 18%;
-    margin-top: 15px;
+    margin-left: 40%;
+    margin-top: 10px;
 }
 .laLigaTab {
     margin-left: 50%;
+}
+.absolute {
+    position: absolute;
+    top: 35%;
 }
